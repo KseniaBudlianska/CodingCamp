@@ -6,7 +6,7 @@ fun main() {
      * Problems:
      * - amount of steps is not clear
      * - time is in text
-     * - unit has different meaning across different countries and it's need convertation (Cup, Tbsp to Gram).
+     * - unit has different meaning across different countries and it needs convertation (Cup, Tbsp to Gram).
      */
     val brownies = createRecipe("Squash Fudge Brownies", "60 minutes",
         """
