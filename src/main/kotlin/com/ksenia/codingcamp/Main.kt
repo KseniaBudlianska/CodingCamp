@@ -21,7 +21,7 @@ fun main() {
         Ingredient("Mashed banana", 0.5, "Cup")
     )
 
-    val rePepperFettuccini = createRecipe("Red Pepper Fettucini Alfredo", "25 minutes",
+    val redPepperFettuccini = createRecipe("Red Pepper Fettucini Alfredo", "25 minutes",
         """
             Bring a large pot of salted water to a boil. Add the pasta and cook until al dente (usually about 30 seconds to a minute less than the package instructions recommend).
             Meanwhile, melt the butter in a medium saucepan over medium heat.
@@ -51,7 +51,7 @@ fun main() {
      * - println shows results not structurally, we need to override toString()
      */
     println(brownies)
-    println(rePepperFettuccini)
+    println(redPepperFettuccini)
 }
 
 fun createRecipe(recipeName: String, timeToPrepare : String, instruction: String, vararg ingredients: Ingredient): Recipe {
