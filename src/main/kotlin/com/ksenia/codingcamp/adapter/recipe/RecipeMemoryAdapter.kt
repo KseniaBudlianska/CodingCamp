@@ -18,7 +18,7 @@ class RecipeMemoryAdapter : RecipeProvider {
     }
 
     override fun updateRecipe(recipe: Recipe, updatedRecipe: Recipe) {
-        this.repository.forEach { if (it == recipe) updatedRecipe else it } // todo doesn't work, update
+        this.repository.map { if (it == recipe) updatedRecipe else it } // todo doesn't work, update
     }
 
     override fun deleteRecipe(recipe: Recipe) {
