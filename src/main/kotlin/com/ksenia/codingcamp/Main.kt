@@ -1,5 +1,6 @@
 import com.ksenia.codingcamp.domain.Ingredient
 import com.ksenia.codingcamp.domain.Recipe
+import com.ksenia.codingcamp.service.RecipeService
 
 fun main() {
     /**
@@ -50,8 +51,16 @@ fun main() {
      * Problem:
      * - println shows results not structurally, we need to override toString()
      */
-    println(brownies)
-    println(redPepperFettuccini)
+    val service = RecipeService()
+
+    service.createRecipe(brownies)
+    println("Brownies: " + service.readRecipes())
+    service.createRecipe(redPepperFettuccini)
+    println("Brownies & Red Peppers: " + service.readRecipes())
+    service.updateRecipe(brownies, redPepperFettuccini)
+    println("Red Peppers & Red Peppers: " + service.readRecipes())
+    service.deleteRecipe(redPepperFettuccini)
+    println("Red Peppers: " + service.readRecipes())
 }
 
 fun createRecipe(recipeName: String, timeToPrepare : String, instruction: String, vararg ingredients: Ingredient): Recipe {
