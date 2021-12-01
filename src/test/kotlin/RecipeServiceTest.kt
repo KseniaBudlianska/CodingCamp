@@ -6,7 +6,7 @@ import java.util.Collections.emptyList
 
 class RecipeServiceTest {
 
-    private val mockAdapter = RecipeMockAdapter()
+    private val mockAdapter = RecipeSpyAdapter()
     private val recipeService = RecipeService(mockAdapter)
 
     @Test
@@ -15,23 +15,45 @@ class RecipeServiceTest {
 
         recipeService.createRecipe(recipe)
 
-        val createRecipe = mockAdapter.getCreatedRecipe()
+        val createdRecipe = mockAdapter.createdRecipe
 
-        assertTrue(createRecipe == recipe)
+        assertTrue(createdRecipe == recipe)
     }
 
-    /*@Test
+    @Test
     fun readRecipe() {
-        recipeSrvice.readRecipe()
+        val recipes = listOf(
+            Recipe("My recipe 1", "", emptyList(), ""),
+            Recipe("My recipe 1", "", emptyList(), ""),
+            Recipe("My recipe 1", "", emptyList(), ""),
+            Recipe("My recipe 1", "", emptyList(), "")
+        )
+        mockAdapter.repositoryRecipes = recipes
+
+        val returnedRecipes = recipeService.readRecipes()
+
+        assertTrue(returnedRecipes == recipes)
     }
 
     @Test
     fun updateRecipe() {
-        recipeSrvice.updateRecipe(recipe)
+        val recipe = Recipe("My recipe 1", "", emptyList(), "")
+
+        recipeService.updateRecipe(recipe)
+
+        val updatedRecipe = mockAdapter.updatedRecipe
+
+        assertTrue(recipe == updatedRecipe)
     }
 
     @Test
     fun deleteRecipe() {
-        recipeSrvice.deleteRecipe(recipe)
-    }*/
+        val recipe = Recipe("My recipe 1", "", emptyList(), "")
+
+        recipeService.deleteRecipe(recipe)
+
+        val deletedRecipe = mockAdapter.deletedRecipe
+
+        assertTrue(recipe == deletedRecipe)
+    }
 }
