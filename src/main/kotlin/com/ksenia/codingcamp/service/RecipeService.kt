@@ -1,25 +1,25 @@
 package com.ksenia.codingcamp.service
 
-import com.ksenia.codingcamp.adapter.recipe.RecipeMemoryAdapter
+import com.ksenia.codingcamp.adapter.recipe.RecipeProvider
 import com.ksenia.codingcamp.domain.Recipe
 
-class RecipeService {
-
-    private val adapter = RecipeMemoryAdapter()
+class RecipeService(
+    private val recipeAdapter: RecipeProvider
+) {
 
     fun createRecipe(recipe: Recipe) {
-        adapter.createRecipe(recipe)
+        recipeAdapter.createRecipe(recipe)
     }
 
-    fun readRecipes(): String {
-        return adapter.readRecipes()
+    fun readRecipes(): List<Recipe> {
+        return recipeAdapter.readRecipes()
     }
 
-    fun updateRecipe(recipe: Recipe, updateRecipe: Recipe) {
-        adapter.updateRecipe(recipe, updateRecipe)
+    fun updateRecipe(recipe: Recipe) {
+        recipeAdapter.updateRecipe(recipe)
     }
 
     fun deleteRecipe(recipe: Recipe) {
-        adapter.deleteRecipe(recipe)
+        recipeAdapter.deleteRecipe(recipe)
     }
 }
