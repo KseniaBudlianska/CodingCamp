@@ -1,3 +1,4 @@
+import com.ksenia.codingcamp.adapter.recipe.RecipeMemoryAdapter
 import com.ksenia.codingcamp.domain.Ingredient
 import com.ksenia.codingcamp.domain.Recipe
 import com.ksenia.codingcamp.service.RecipeService
@@ -51,13 +52,15 @@ fun main() {
      * Problem:
      * - println shows results not structurally, we need to override toString()
      */
-    val service = RecipeService()
+    val recipeAdapter = RecipeMemoryAdapter()
+    val service = RecipeService(recipeAdapter)
 
+    service.createRecipe(brownies)
     service.createRecipe(brownies)
     println("Brownies: " + service.readRecipes())
     service.createRecipe(redPepperFettuccini)
     println("Brownies & Red Peppers: " + service.readRecipes())
-    service.updateRecipe(brownies, redPepperFettuccini)
+    service.updateRecipe(brownies)
     println("Red Peppers & Red Peppers: " + service.readRecipes())
     service.deleteRecipe(redPepperFettuccini)
     println("Red Peppers: " + service.readRecipes())

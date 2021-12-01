@@ -7,18 +7,20 @@ import com.ksenia.codingcamp.domain.Recipe
  */
 class RecipeMemoryAdapter : RecipeProvider {
 
-    private val repository = mutableListOf<Recipe>()
+    private val repository = mutableSetOf<Recipe>()
 
     override fun createRecipe(recipe: Recipe) {
         this.repository.add(recipe)
     }
 
-    override fun readRecipes(): String {
-        return this.repository.map { it.recipeName }.toString() // todo update it to return it better
+    override fun readRecipes(): List<Recipe> {
+        return this.repository.toList()
     }
 
-    override fun updateRecipe(recipe: Recipe, updatedRecipe: Recipe) {
-        this.repository.map { if (it == recipe) updatedRecipe else it } // todo doesn't work, update
+    override fun updateRecipe(recipe: Recipe) {
+        val foundRecipe = this.repository.find { it.recipeName == recipe.recipeName }
+        this.repository.remove(foundRecipe)
+        this.repository.add(recipe)
     }
 
     override fun deleteRecipe(recipe: Recipe) {
