@@ -5,7 +5,7 @@ import kotlin.math.roundToInt
 
 class SmartUnitConverter {
 
-    fun convert(weight: Double, converterType: SystemConverter): Double {
+    fun convert(weight: Double, converterType: ConverterType): Double {
         return if (weight >= 0) {
             val weight = weight * converterType.conversionRatio
             roundToTwoDecimalPlaces(weight, decimalPlaces = 2)
@@ -19,7 +19,7 @@ class SmartUnitConverter {
         return (number * shift).roundToInt().toDouble() / shift
     }
 
-    enum class SystemConverter(val conversionRatio: Double) {
+    enum class ConverterType(val conversionRatio: Double) {
         MILLILITERS_TO_LITERS(0.001),
         LITERS_TO_MILLILITERS(1000.0),
         GRAMS_TO_OUNCES(0.035274),

@@ -1,8 +1,8 @@
 import com.ksenia.codingcamp.util.SmartUnitConverter
-import com.ksenia.codingcamp.util.SmartUnitConverter.SystemConverter.GRAMS_TO_OUNCES
-import com.ksenia.codingcamp.util.SmartUnitConverter.SystemConverter.LITERS_TO_MILLILITERS
-import com.ksenia.codingcamp.util.SmartUnitConverter.SystemConverter.MILLILITERS_TO_LITERS
-import com.ksenia.codingcamp.util.SmartUnitConverter.SystemConverter.OUNCES_TO_GRAMS
+import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.GRAMS_TO_OUNCES
+import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.LITERS_TO_MILLILITERS
+import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.MILLILITERS_TO_LITERS
+import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.OUNCES_TO_GRAMS
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
