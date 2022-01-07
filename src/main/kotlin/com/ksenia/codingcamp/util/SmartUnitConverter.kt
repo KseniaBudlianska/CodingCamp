@@ -6,11 +6,11 @@ import kotlin.math.roundToInt
 class SmartUnitConverter {
 
     fun convert(weight: Double, converterType: SystemConverter): Double {
-        return if (weight < 0) {
-            throw NumberFormatException("Negative weight cannot be converted.")
-        } else {
+        return if (weight >= 0) {
             val weight = weight * converterType.conversionRatio
             roundToTwoDecimalPlaces(weight, decimalPlaces = 2)
+        } else {
+            throw NumberFormatException("Negative weight cannot be converted.")
         }
     }
 
