@@ -7,8 +7,9 @@ class SmartUnitConverter {
 
     fun convert(weight: Double, converterType: ConverterType): Double {
         return if (weight >= 0) {
-            val weight = weight * converterType.conversionRatio
-            roundToTwoDecimalPlaces(weight, decimalPlaces = 2)
+            (weight * converterType.conversionRatio).also { newWeight ->
+                roundToTwoDecimalPlaces(newWeight, decimalPlaces = 2)
+            }
         } else {
             throw NumberFormatException("Negative weight cannot be converted.")
         }
