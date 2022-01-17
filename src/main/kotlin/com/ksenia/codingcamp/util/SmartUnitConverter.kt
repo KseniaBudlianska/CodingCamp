@@ -38,7 +38,7 @@ class SmartUnitConverter {
         return (number * shift).roundToInt().toDouble() / shift
     }
 
-    enum class ConverterType(val conversionRatio: Double) {
+    private enum class ConverterType(val conversionRatio: Double) {
         MILLILITERS_TO_LITERS(0.001),
         LITERS_TO_MILLILITERS(1000.0),
         GRAMS_TO_OUNCES(0.035274),
