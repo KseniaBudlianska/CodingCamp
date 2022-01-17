@@ -44,7 +44,7 @@ class SmartUnitConverterTest {
     fun shouldConvertOneHundredOuncesToGrams() {
         val ounces = converter.smartConvert(100.0, OUNCES, GRAMS)
 
-        assertEquals(3.53, ounces)
+        assertEquals(2834.95, ounces)
     }
 
     @Test
