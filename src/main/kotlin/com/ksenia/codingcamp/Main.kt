@@ -1,5 +1,7 @@
 import com.ksenia.codingcamp.adapter.recipe.RecipeMemoryAdapter
 import com.ksenia.codingcamp.domain.Ingredient
+import com.ksenia.codingcamp.domain.MeasurementUnit
+import com.ksenia.codingcamp.domain.MeasurementUnit.*
 import com.ksenia.codingcamp.domain.Recipe
 import com.ksenia.codingcamp.service.RecipeService
 
@@ -17,10 +19,10 @@ fun main() {
             Transfer brownie batter to loaf pan and bake for 12-15 minutes, or until a skewer comes out just clean. 
             Allow the brownies to cool in the pan completely before frosting. Brownies need to kept refrigerated for the best texture.
         """.trimIndent(),
-        Ingredient("Butternut squash puree", 1.0, "Cup"),
-        Ingredient("Drippy almond butter", 0.5, "Cup"),
-        Ingredient("Cocoa powder", 0.5, "Cup"),
-        Ingredient("Mashed banana", 0.5, "Cup")
+        Ingredient("Butternut squash puree", 200.0, GRAMS),
+        Ingredient("Drippy almond butter", 50.0, GRAMS),
+        Ingredient("Cocoa powder", 50.0, GRAMS),
+        Ingredient("Mashed banana", 50.0, GRAMS)
     )
 
     val redPepperFettuccini = createRecipe("Red Pepper Fettucini Alfredo", "25 minutes",
@@ -37,15 +39,15 @@ fun main() {
             Toss to coat evenly.
             Divide among 4 warm bowls or plates.
         """.trimIndent(),
-        Ingredient("Dried fettuccine", 1.0, "unit"),
-        Ingredient("Butter", 1.5, "Tbsp"),
-        Ingredient("Flour", 1.5, "Tbsp"),
-        Ingredient("Milk", 1.0, "Cup"),
-        Ingredient("Red peppers", 0.75, "Cup"),
-        Ingredient("Garlic", 2.0, "unit"),
-        Ingredient("Parmesan", 0.5, "Cup"),
-        Ingredient("Salt", 1.0, ""),
-        Ingredient("Black pepper", 1.0, "")
+        Ingredient("Dried fettuccine", 1.0, UNIT),
+        Ingredient("Butter", 1.5, TBSP),
+        Ingredient("Flour", 1.5, TBSP),
+        Ingredient("Milk", 1.0, CUP),
+        Ingredient("Red peppers", 0.75, CUP),
+        Ingredient("Garlic", 2.0, UNIT),
+        Ingredient("Parmesan", 0.5, CUP),
+        Ingredient("Salt", 1.0, UNIT),
+        Ingredient("Black pepper", 1.0, UNIT)
     )
 
     /**
