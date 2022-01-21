@@ -10,5 +10,15 @@ data class Recipe(
 data class Ingredient(
    val name: String,
    val amount: Double,
-   val unit: String? = null
+   val unit: MeasurementUnit? = null
 )
+
+enum class MeasurementUnit {
+    UNIT,
+    TBSP,
+    CUP,
+    GRAMS,
+    OUNCES,
+    LITERS,
+    MILLILITERS;
+}
