@@ -1,6 +1,5 @@
 import com.ksenia.codingcamp.adapter.recipe.RecipeMemoryAdapter
 import com.ksenia.codingcamp.domain.Ingredient
-import com.ksenia.codingcamp.domain.MeasurementUnit
 import com.ksenia.codingcamp.domain.MeasurementUnit.*
 import com.ksenia.codingcamp.domain.Recipe
 import com.ksenia.codingcamp.service.RecipeService
@@ -19,10 +18,10 @@ fun main() {
             Transfer brownie batter to loaf pan and bake for 12-15 minutes, or until a skewer comes out just clean. 
             Allow the brownies to cool in the pan completely before frosting. Brownies need to kept refrigerated for the best texture.
         """.trimIndent(),
-        Ingredient("Butternut squash puree", 200.0, GRAMS),
-        Ingredient("Drippy almond butter", 50.0, GRAMS),
-        Ingredient("Cocoa powder", 50.0, GRAMS),
-        Ingredient("Mashed banana", 50.0, GRAMS)
+        Ingredient("Butternut squash puree", 200.0, GRAM),
+        Ingredient("Drippy almond butter", 50.0, GRAM),
+        Ingredient("Cocoa powder", 50.0, GRAM),
+        Ingredient("Mashed banana", 50.0, GRAM)
     )
 
     val redPepperFettuccini = createRecipe("Red Pepper Fettucini Alfredo", "25 minutes",

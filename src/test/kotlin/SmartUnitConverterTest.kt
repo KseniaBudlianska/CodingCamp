@@ -1,8 +1,10 @@
-import com.ksenia.codingcamp.domain.MeasurementUnit.GRAMS
-import com.ksenia.codingcamp.domain.MeasurementUnit.LITERS
-import com.ksenia.codingcamp.domain.MeasurementUnit.MILLILITERS
-import com.ksenia.codingcamp.domain.MeasurementUnit.OUNCES
+import com.ksenia.codingcamp.domain.MassMeasurementUnit
+import com.ksenia.codingcamp.domain.MeasurementUnit.GRAM
+import com.ksenia.codingcamp.domain.MeasurementUnit.LITER
+import com.ksenia.codingcamp.domain.MeasurementUnit.MILLILITER
+import com.ksenia.codingcamp.domain.MeasurementUnit.OUNCE
 import com.ksenia.codingcamp.domain.MeasurementUnit.TBSP
+import com.ksenia.codingcamp.domain.VolumeMeasurementUnit
 import com.ksenia.codingcamp.util.SmartUnitConverter
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
@@ -14,21 +16,21 @@ class SmartUnitConverterTest {
 
     @Test
     fun shouldConvertOneHundredGramsToOunces() {
-        val ounces = converter.smartConvert(100.0, GRAMS, OUNCES)
+        val ounces = converter.smartConvert(100.0, GRAM, OUNCE)
 
         assertEquals(3.53, ounces)
     }
 
     @Test
     fun shouldConvertZeroGramsToOunces() {
-        val ounces = converter.smartConvert(0.0, GRAMS, OUNCES)
+        val ounces = converter.smartConvert(0.0, GRAM, OUNCE)
 
         assertEquals(0.0, ounces)
     }
 
     @Test
     fun shouldConvertTenGramsToOunces() {
-        val ounces = converter.smartConvert(10.0, GRAMS, OUNCES)
+        val ounces = converter.smartConvert(10.0, GRAM, OUNCE)
 
         assertEquals(0.35, ounces)
     }
@@ -36,27 +38,27 @@ class SmartUnitConverterTest {
     @Test
     fun shouldFailToConvertNegativeGramsToOunces() {
         assertThrows(NumberFormatException::class.java) {
-            converter.smartConvert(-28.34952, GRAMS, OUNCES)
+            converter.smartConvert(-28.34952, GRAM, OUNCE)
         }
     }
 
     @Test
     fun shouldConvertOneHundredOuncesToGrams() {
-        val ounces = converter.smartConvert(100.0, OUNCES, GRAMS)
+        val ounces = converter.smartConvert(100.0, OUNCE, GRAM)
 
         assertEquals(2834.95, ounces)
     }
 
     @Test
     fun shouldConvertZeroOuncesToGrams() {
-        val ounces = converter.smartConvert(0.0, OUNCES, GRAMS)
+        val ounces = converter.smartConvert(0.0, OUNCE, GRAM)
 
         assertEquals(0.0, ounces)
     }
 
     @Test
     fun shouldConvertTenOuncesToGrams() {
-        val ounces = converter.smartConvert(10.0, OUNCES, GRAMS)
+        val ounces = converter.smartConvert(10.0, OUNCE, GRAM)
 
         assertEquals(283.5, ounces)
     }
@@ -64,27 +66,27 @@ class SmartUnitConverterTest {
     @Test
     fun shouldFailToConvertNegativeOuncesToGrams() {
         assertThrows(NumberFormatException::class.java) {
-            converter.smartConvert(-28.34952, OUNCES, GRAMS)
+            converter.smartConvert(-28.34952, OUNCE, GRAM)
         }
     }
 
     @Test
     fun shouldConvertOneHundredMillilitersToLiters() {
-        val ounces = converter.smartConvert(100.0, MILLILITERS, LITERS)
+        val ounces = converter.smartConvert(100.0, MILLILITER, LITER)
 
         assertEquals(0.1, ounces)
     }
 
     @Test
     fun shouldConvertZeroMillilitersToLiters() {
-        val ounces = converter.smartConvert(0.0, MILLILITERS, LITERS)
+        val ounces = converter.smartConvert(0.0, MILLILITER, LITER)
 
         assertEquals(0.0, ounces)
     }
 
     @Test
     fun shouldConvertTenMillilitersToLiters() {
-        val ounces = converter.smartConvert(10.0, MILLILITERS, LITERS)
+        val ounces = converter.smartConvert(10.0, MILLILITER, LITER)
 
         assertEquals(0.01, ounces)
     }
@@ -92,27 +94,27 @@ class SmartUnitConverterTest {
     @Test
     fun shouldFailToConvertNegativeMillilitersToLiters() {
         assertThrows(NumberFormatException::class.java) {
-            converter.smartConvert(-28.34952, MILLILITERS, LITERS)
+            converter.smartConvert(-28.34952, MILLILITER, LITER)
         }
     }
 
     @Test
     fun shouldConvertOneHundredLitersToMilliliters() {
-        val ounces = converter.smartConvert(100.0, LITERS, MILLILITERS)
+        val ounces = converter.smartConvert(100.0, LITER, MILLILITER)
 
         assertEquals(100000.0, ounces)
     }
 
     @Test
     fun shouldConvertZeroLitersToMilliliters() {
-        val ounces = converter.smartConvert(0.0, LITERS, MILLILITERS)
+        val ounces = converter.smartConvert(0.0, LITER, MILLILITER)
 
         assertEquals(0.0, ounces)
     }
 
     @Test
     fun shouldConvertTenLitersToMilliliters() {
-        val ounces = converter.smartConvert(10.0, LITERS, MILLILITERS)
+        val ounces = converter.smartConvert(10.0, LITER, MILLILITER)
 
         assertEquals(10000.0, ounces)
     }
@@ -120,21 +122,70 @@ class SmartUnitConverterTest {
     @Test
     fun shouldFailToConvertNegativeLitersToMilliliters() {
         assertThrows(NumberFormatException::class.java) {
-            converter.smartConvert(-28.34952, LITERS, MILLILITERS)
+            converter.smartConvert(-28.34952, LITER, MILLILITER)
         }
     }
 
     @Test
     fun shouldFailToConvertLitersToLiters() {
         assertThrows(IllegalStateException::class.java) {
-            converter.smartConvert(28.34952, LITERS, LITERS)
+            converter.smartConvert(28.34952, LITER, LITER)
         }
     }
 
     @Test
     fun shouldFailToConvertLitersToTbsp() {
         assertThrows(IllegalStateException::class.java) {
-            converter.smartConvert(20.0, LITERS, TBSP)
+            converter.smartConvert(20.0, LITER, TBSP)
         }
+    }
+
+    @Test
+    fun shouldSmarterConvertOneLiterToMilliliter() {
+        val ounces = converter.smarterConverter(1.0, VolumeMeasurementUnit.LITER, VolumeMeasurementUnit.MILLILITER)
+
+        assertEquals(1000.0, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertTenLiterToMilliliter() {
+        val ounces = converter.smarterConverter(10.0, VolumeMeasurementUnit.LITER, VolumeMeasurementUnit.MILLILITER)
+
+        assertEquals(10000.0, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertTenFluidOuncesToLiter() {
+        val ounces = converter.smarterConverter(10.0, VolumeMeasurementUnit.FLUID_OUNCE, VolumeMeasurementUnit.LITER)
+
+        assertEquals(0.3, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertOneGramToKilogram() {
+        val ounces = converter.smarterConverter(1.0, MassMeasurementUnit.GRAM, MassMeasurementUnit.KILOGRAM)
+
+        assertEquals(1000.0, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertTenGramToKilogram() {
+        val ounces = converter.smarterConverter(10.0, MassMeasurementUnit.GRAM, MassMeasurementUnit.KILOGRAM)
+
+        assertEquals(10000.0, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertOneGramToGram() {
+        val ounces = converter.smarterConverter(1.0, MassMeasurementUnit.GRAM, MassMeasurementUnit.GRAM)
+
+        assertEquals(1, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertTenOuncesToGram() {
+        val ounces = converter.smarterConverter(10.0, MassMeasurementUnit.OUNCE, MassMeasurementUnit.GRAM)
+
+        assertEquals(283.5, ounces)
     }
 }
