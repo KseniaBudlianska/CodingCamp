@@ -77,4 +77,13 @@ class RecipeServiceTest {
 
         assertEquals(returnedRecipes, recipe)
     }
+
+    @Test
+    fun findRecipeByNameReturnsNullIfNotValidRecipe() {
+        val recipe = Recipe("My recipe 1", "", emptyList(), "")
+
+        val returnedRecipes = recipeService.findRecipeByName(recipe.recipeName)
+
+        assertEquals(returnedRecipes, recipe)
+    }
 }

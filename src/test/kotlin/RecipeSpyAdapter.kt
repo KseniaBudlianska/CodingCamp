@@ -26,6 +26,7 @@ class RecipeSpyAdapter : RecipeProvider {
     }
 
     override fun findRecipeByName(recipeName: String) : Recipe? {
+        reciepeToBeSearched = Recipe(recipeName, "", listOf(), "")
         return reciepeToBeSearched
     }
 }
