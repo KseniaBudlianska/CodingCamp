@@ -77,4 +77,14 @@ class RecipeServiceTest {
 
         assertEquals(returnedRecipes, recipe)
     }
+
+    @Test
+    fun findRecipeByNameReturnsNullIfNotValidRecipe() {
+        val recipe = Recipe("My recipe 1", "", emptyList(), "")
+        mockAdapter.reciepeToBeSearched = recipe
+
+        val returnedRecipes = recipeService.findRecipeByName(recipe.recipeName + "1")
+
+        assertEquals(returnedRecipes, null)
+    }
 }
