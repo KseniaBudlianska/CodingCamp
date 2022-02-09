@@ -1,6 +1,5 @@
 import com.ksenia.codingcamp.domain.Recipe
 import com.ksenia.codingcamp.service.RecipeService
-import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import java.util.Collections.emptyList
@@ -61,17 +60,19 @@ class RecipeServiceTest {
 
     @Test
     fun findRecipeByNameReturnsNullIfNoRecipe() {
-        mockAdapter.reciepeToBeSearched = null
+        mockAdapter.recipeToBeSearched = null
 
         val returnedRecipes = recipeService.findRecipeByName("My recipe 2")
 
-        assertNull(returnedRecipes)
+        assertEquals(returnedRecipes, null)
     }
 
     @Test
     fun findRecipeByNameReturnsRecipeIfValidRecipe() {
         val recipe = Recipe("My recipe 1", "", emptyList(), "")
-        mockAdapter.reciepeToBeSearched = recipe
+
+        mockAdapter.recipeToBeSearched = recipe
+        mockAdapter.foundRecipe = recipe
 
         val returnedRecipes = recipeService.findRecipeByName(recipe.recipeName)
 
@@ -82,8 +83,11 @@ class RecipeServiceTest {
     fun findRecipeByNameReturnsNullIfNotValidRecipe() {
         val recipe = Recipe("My recipe 1", "", emptyList(), "")
 
-        val returnedRecipes = recipeService.findRecipeByName(recipe.recipeName)
+        mockAdapter.recipeToBeSearched = recipe
+        mockAdapter.foundRecipe = null
 
-        assertEquals(returnedRecipes, recipe)
+        val returnedRecipes = recipeService.findRecipeByName(recipe.recipeName + "!")
+
+        assertEquals(returnedRecipes, null)
     }
 }
