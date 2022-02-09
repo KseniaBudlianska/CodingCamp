@@ -26,4 +26,8 @@ class RecipeMemoryAdapter : RecipeProvider {
     override fun deleteRecipe(recipe: Recipe) {
         this.repository.remove(recipe)
     }
+
+    override fun findRecipeByName(recipeName: String): Recipe? {
+        return this.repository.find { it.recipeName == recipeName }
+    }
 }

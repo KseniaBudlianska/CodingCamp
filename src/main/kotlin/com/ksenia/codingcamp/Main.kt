@@ -1,6 +1,6 @@
 import com.ksenia.codingcamp.adapter.recipe.RecipeMemoryAdapter
 import com.ksenia.codingcamp.domain.Ingredient
-import com.ksenia.codingcamp.domain.MeasurementUnit.*
+import com.ksenia.codingcamp.domain.MassMeasurementUnit.GRAM
 import com.ksenia.codingcamp.domain.Recipe
 import com.ksenia.codingcamp.service.RecipeService
 
@@ -38,15 +38,15 @@ fun main() {
             Toss to coat evenly.
             Divide among 4 warm bowls or plates.
         """.trimIndent(),
-        Ingredient("Dried fettuccine", 1.0, UNIT),
-        Ingredient("Butter", 1.5, TBSP),
-        Ingredient("Flour", 1.5, TBSP),
-        Ingredient("Milk", 1.0, CUP),
-        Ingredient("Red peppers", 0.75, CUP),
-        Ingredient("Garlic", 2.0, UNIT),
-        Ingredient("Parmesan", 0.5, CUP),
-        Ingredient("Salt", 1.0, UNIT),
-        Ingredient("Black pepper", 1.0, UNIT)
+        Ingredient("Dried fettuccine", 1.0, GRAM),
+        Ingredient("Butter", 250.0, GRAM),
+        Ingredient("Flour", 500.0, GRAM),
+        Ingredient("Milk", 100.0, GRAM),
+        Ingredient("Red peppers", 200.0, GRAM),
+        Ingredient("Garlic", 15.0, GRAM),
+        Ingredient("Parmesan", 50.0, GRAM),
+        Ingredient("Salt", 3.0, GRAM),
+        Ingredient("Black pepper", 2.0, GRAM)
     )
 
     /**
@@ -65,6 +65,10 @@ fun main() {
     println("Red Peppers & Red Peppers: " + service.readRecipes())
     service.deleteRecipe(redPepperFettuccini)
     println("Red Peppers: " + service.readRecipes())
+
+    service.findRecipeByName(brownies.recipeName)
+
+    service.findRecipeByName("Test")
 }
 
 fun createRecipe(recipeName: String, timeToPrepare : String, instruction: String, vararg ingredients: Ingredient): Recipe {

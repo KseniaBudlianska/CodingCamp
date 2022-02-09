@@ -8,6 +8,7 @@ import com.ksenia.codingcamp.domain.VolumeMeasurementUnit
 import com.ksenia.codingcamp.util.SmartUnitConverter
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
+import java.util.*
 import kotlin.test.assertEquals
 
 class SmartUnitConverterTest {
@@ -179,7 +180,7 @@ class SmartUnitConverterTest {
     fun shouldSmarterConvertOneGramToGram() {
         val ounces = converter.smarterConverter(1.0, MassMeasurementUnit.GRAM, MassMeasurementUnit.GRAM)
 
-        assertEquals(1, ounces)
+        assertEquals(1.0, ounces)
     }
 
     @Test
@@ -187,5 +188,19 @@ class SmartUnitConverterTest {
         val ounces = converter.smarterConverter(10.0, MassMeasurementUnit.OUNCE, MassMeasurementUnit.GRAM)
 
         assertEquals(283.5, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertTenKilogramsToOunces() {
+        val ounces = converter.smarterConverter(10.0, MassMeasurementUnit.KILOGRAM, MassMeasurementUnit.OUNCE)
+
+        assertEquals(352.74, ounces)
+    }
+
+    @Test
+    fun shouldSmarterConvertTenKilogramsToLiters() {
+        assertThrows(InputMismatchException::class.java) {
+            converter.smarterConverter(10.0, MassMeasurementUnit.KILOGRAM, VolumeMeasurementUnit.LITER)
+        }
     }
 }

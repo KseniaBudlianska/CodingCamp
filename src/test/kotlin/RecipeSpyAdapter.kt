@@ -7,6 +7,7 @@ class RecipeSpyAdapter : RecipeProvider {
     lateinit var repositoryRecipes: List<Recipe>
     lateinit var updatedRecipe: Recipe
     lateinit var deletedRecipe: Recipe
+    var reciepeToBeSearched: Recipe? = null
 
     override fun createRecipe(recipe: Recipe) {
         createdRecipe = recipe
@@ -22,5 +23,9 @@ class RecipeSpyAdapter : RecipeProvider {
 
     override fun deleteRecipe(recipe: Recipe) {
         deletedRecipe = recipe
+    }
+
+    override fun findRecipeByName(recipeName: String) : Recipe? {
+        return reciepeToBeSearched
     }
 }
