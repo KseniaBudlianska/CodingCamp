@@ -10,6 +10,7 @@ import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.GRAMS_TO_OUNC
 import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.LITERS_TO_MILLILITERS
 import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.MILLILITERS_TO_LITERS
 import com.ksenia.codingcamp.util.SmartUnitConverter.ConverterType.OUNCES_TO_GRAMS
+import java.util.*
 import kotlin.math.pow
 import kotlin.math.roundToInt
 
@@ -18,7 +19,9 @@ class SmartUnitConverter {
     fun smarterConverter(amount: Double, originUnit: Unit, convertedUnit: Unit): Double {
         val inboundConversionFactor = originUnit.getFactor()  // Unit -> Base
         val outboundConversionFactor = 1 / convertedUnit.getFactor() // Base -> New unit
-        return roundToTwoDecimalPlaces(amount * inboundConversionFactor * outboundConversionFactor, 2)
+        if (originUnit.javaClass != convertedUnit.javaClass) {
+            throw InputMismatchException("Not the same types.")
+        } else return roundToTwoDecimalPlaces(amount * inboundConversionFactor * outboundConversionFactor, 2)
     }
 
     fun smartConvert(amount: Double, originUnit: MeasurementUnit, convertedUnit: MeasurementUnit): Double {
