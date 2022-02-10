@@ -60,34 +60,35 @@ class RecipeServiceTest {
 
     @Test
     fun findRecipeByNameReturnsNullIfNoRecipe() {
-        mockAdapter.recipeToBeSearched = null
-
         val returnedRecipes = recipeService.findRecipeByName("My recipe 2")
 
-        assertEquals(returnedRecipes, null)
+        assertEquals(returnedRecipes, emptyList())
+        assertEquals(mockAdapter.recipeToBeSearched, "My recipe 2")
     }
 
     @Test
     fun findRecipeByNameReturnsRecipeIfValidRecipe() {
-        val recipe = Recipe("My recipe 1", "", emptyList(), "")
+        val recipeName = "My recipe 1"
+        val recipeToBeReturn = listOf(Recipe(recipeName, "", emptyList(), ""))
 
-        mockAdapter.recipeToBeSearched = recipe
-        mockAdapter.foundRecipe = recipe
+        mockAdapter.foundRecipe = recipeToBeReturn
 
-        val returnedRecipes = recipeService.findRecipeByName(recipe.recipeName)
+        val recipe = recipeService.findRecipeByName(recipeName)
 
-        assertEquals(returnedRecipes, recipe)
+        assertEquals(recipeToBeReturn, recipe)
+        assertEquals(mockAdapter.recipeToBeSearched, recipeName)
     }
 
     @Test
     fun findRecipeByNameReturnsNullIfNotValidRecipe() {
-        val recipe = Recipe("My recipe 1", "", emptyList(), "")
+        val recipeName = "My recipe 1"
+        val recipeToBeReturn = Recipe(recipeName, "", emptyList(), "")
 
-        mockAdapter.recipeToBeSearched = recipe
-        mockAdapter.foundRecipe = null
+        mockAdapter.foundRecipe = emptyList()
 
-        val returnedRecipes = recipeService.findRecipeByName(recipe.recipeName + "!")
+        val recipe = recipeService.findRecipeByName(recipeToBeReturn.recipeName + "!")
 
-        assertEquals(returnedRecipes, null)
+        assertEquals(emptyList(), recipe)
+        assertEquals(mockAdapter.recipeToBeSearched, recipeName + "!")
     }
 }

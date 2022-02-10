@@ -23,7 +23,7 @@ class RecipeService(
         recipeAdapter.deleteRecipe(recipe)
     }
 
-    fun findRecipeByName(recipe: String) : Recipe? {
-        return recipeAdapter.findRecipeByName(recipe)
+    fun findRecipeByName(recipe: String) : List<Recipe?> {
+        return recipeAdapter.findRecipesByName(recipe)
     }
 }
